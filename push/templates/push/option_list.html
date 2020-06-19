@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}crm: {% trans "Options" %}{%endblock %}
+
+{% block content %}
+<a class="btn btn-primary" href="{%url 'push:option-create'%}">{% trans 'Create'%} {% trans 'Option' %}</a>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">{% trans "Name" %}</th>
+      <th scope="col">{% trans "Value" %}</th>
+      <th scope="col">{% trans "Actions" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in object_list %}
+    <tr onclick="window.location.href='{{item.get_absolute_url}}'">
+      <td>{{item.name}}</td>
+      <td>{{item.value}}</td>
+      <td><a class="btn btn-danger" href="{% url 'push:option-delete' item.pk %}">{% trans "Delete" %}</a><td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

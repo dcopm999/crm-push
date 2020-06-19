@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load i18n crispy_forms_tags %}
+
+{% block title %}CRM: {% trans 'Push Detail:'%}{{object.pk}}{% endblock %}
+
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+      <h2>{% trans "Push Notification" %}</h2>
+      <form method="POST">
+	{% csrf_token %}
+	{{ form| crispy }}
+	<input type="submit" class="btn btn-success" value="{% trans 'Send' %}">
+      </form>
+    </div>
+    
+    <div class="col-md-3 offset-md-3">
+
+	<h2>Android</h2>
+	<div class="row">
+	  <b>{{object.title}}</b>
+	</div>
+	<div class="row">
+	  {{object.text}}
+	</div>
+
+
+	<h2>IOS</h2>
+	<div class="row">
+	  <b>{{object.title}}</b>
+	</div>
+	<div class="row">
+	  {{object.text}}
+	</div>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}crm: {% trans "Push Notifications" %}{%endblock %}
+
+{% block content %}
+<a class="btn btn-primary" href="{%url 'push:push-create'%}">{% trans 'Create'%} {% trans 'Push Notification'%}</a>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">{% trans "Title" %}</th>
+      <th scope="col">{% trans "Text" %}</th>
+      <th scope="col">{% trans "Created" %}</th>
+      <th scope="col">{% trans "Push date" %}</th>
+      <th scope="col">{% trans "Pushed" %}</th>
+      <th scope="col">{% trans "Count" %}</th>
+      <th scope="col">{% trans "Actions" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in object_list %}
+    <tr onclick="window.location.href='{{item.get_absolute_url}}'">
+      <th scope="row">{{item.title}}</th>
+      <td>{{item.text}}</td>
+      <td>{{item.created}}</td>
+      <td>{{item.push_date}}</td>
+      <td>{{item.pushed}}</td>
+      <td>{{item.count}}</td>
+      <td><a class="btn btn-danger" href="{% url 'push:push-delete' item.pk %}">{% trans "Delete" %}</a><td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
