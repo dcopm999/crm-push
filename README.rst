@@ -5,8 +5,8 @@ crm-push
 .. image:: https://badge.fury.io/py/crm-push.svg
     :target: https://badge.fury.io/py/crm-push
 
-.. image:: https://travis-ci.org/dcopm999/crm-push.svg?branch=master
-    :target: https://travis-ci.org/dcopm999/crm-push
+.. image:: https://travis-ci.com/dcopm999/crm-push.svg?branch=master
+    :target: https://travis-ci.com/dcopm999/crm-push
 
 .. image:: https://codecov.io/gh/dcopm999/crm-push/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/dcopm999/crm-push
@@ -31,7 +31,7 @@ Add it to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = (
         ...
-        'push.apps.PushConfig',
+        'push',
         ...
     )
 
@@ -44,7 +44,7 @@ Add crm-push's URL patterns:
 
     urlpatterns = [
         ...
-        url(r'^', include(push_urls)),
+        path(r'push/', include(push_urls, namespace='push')),
         ...
     ]
 
