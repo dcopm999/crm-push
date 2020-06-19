@@ -56,7 +56,9 @@ setup(
         'push',
     ],
     include_package_data=True,
-    install_requires=[],
+    install_requires=[
+        'django-crispy-forms==1.9.0',
+    ],
     zip_safe=False,
     keywords='crm-push',
     classifiers=[
