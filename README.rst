@@ -44,7 +44,7 @@ Add crm-push's URL patterns:
 
     urlpatterns = [
         ...
-        path(r'push/', include(push_urls, namespace='push')),
+        path('push/', include(push_urls, namespace='push')),
         ...
     ]
 
